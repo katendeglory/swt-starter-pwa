@@ -9,7 +9,7 @@
     "start": "sirv public",
     "serve": "serve public -p 80",
     "dev": "cross-env HOST=0.0.0.0 PORT=80 concurrently \"yarn run dev:only\" \"yarn run tailwind:watch\"",
-    "dev+": "cross-env HOST=0.0.0.0 PORT=80 concurrently \"yarn run dev:only\" \"yarn run tailwind:watch\" \"yarn run watcher\" ",
+    "dev+": "cross-env HOST=0.0.0.0 PORT=80 concurrently \"yarn run dev\" \"yarn run watcher\"",
     "git:push": "git add . && git commit -am \"Yet another commit\" && git push origin main",
     "git:deploy": "yarn run export --basepath svelte-tailwind-starter && gh-pages -d public",
     "web:build": "yarn run git:push && yarn run build && Xcopy /E /I /Y .\\public .\\..\\public",

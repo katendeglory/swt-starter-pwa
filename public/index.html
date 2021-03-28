@@ -25,12 +25,20 @@
 <body>
 
 	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" crossorigin="anonymous"> -->
-	<!-- Unregister in dev mode and register in build mode -->
+
 	<script async>
-		if ('serviceWorker' in navigator) {
-			window.addEventListener('load', function () {
-				navigator.serviceWorker.register('/sw.js');
-			});
+		let mode = 'DEVELOPMENT';
+		// let mode = 'PRODUCTION';
+
+		// We don't need excessive caching in development mode, the changes won't be taken into account
+		if (mode === 'PRODUCTION') {
+			if ('serviceWorker' in navigator) {
+				window.addEventListener('load', function () {
+					navigator.serviceWorker.register('/sw.js');
+				});
+			}
+		} else {
+			console.log("💡 SERVICE WORKERS DISABLED IN DEVELOPMENT MODE")
 		}
 	</script>
 	<script defer>
