@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add onchange --save-dev
+  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js
 
 PATH: 
   C:\Python27\;C:\Python27\Scripts;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Java\jdk1.8.0_191\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NetBeans 8.2\bin;C:\Maven\apache-maven-3.6.0\bin;C:\Program Files\Apache Ant\apache-ant-1.10.5\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\Server\4.0\bin;C:\tools\BCURRAN3;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\hp\scoop\shims;C:\Users\hp\.windows-build-tools\python27;C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\hp\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\hp\AppData\Roaming\npm\node_modules\.bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Ruby25-x64\bin;C:\Users\hp\AppData\Local\Microsoft\WindowsApps;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\Cmder;C:\Program Files (x86)\NirSoft\Wireless Network Watcher;C:\Program Files (x86)\Inno Setup 5;C:\Program Files (x86)\WiX Toolset v3.11\bin;C:\Program Files\heroku\bin;C:\tools\mysql\current\bin;C:\Users\hp\AppData\Local\.meteor;C:\Users\hp\AppData\Roaming\npm
@@ -14,8 +14,12 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
-      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)
+  SyntaxError: C:\Users\hp\dev-space\commercial\@starters\swt-starter-pwa-v2\package.json: Unexpected token } in JSON at position 2065
+      at JSON.parse (<anonymous>)
+      at C:\Program Files\nodejs\node_modules\yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files\nodejs\node_modules\yarn\lib\cli.js:310:30)
+      at C:\Program Files\nodejs\node_modules\yarn\lib\cli.js:321:13
 
 npm manifest: 
   {
@@ -25,7 +29,7 @@ npm manifest:
       "tailwind:watch": "postcss public/tailwind.css -o public/index.css -w",
       "tailwind:build": "cross-env NODE_ENV=production postcss public/tailwind.css -o public/index.css",
       "dev:only": "cross-env HOST=0.0.0.0 PORT=80 rollup -c -w",
-      "build": "yarn run tailwind:build && rollup -c",
+      "build": "yarn run tailwind:build && rollup -c && yarn run injectManifest",
       "start": "sirv public",
       "serve": "serve public -p 80",
       "dev": "cross-env HOST=0.0.0.0 PORT=80 concurrently \"yarn run dev:only\" \"yarn run tailwind:watch\"",
@@ -37,7 +41,7 @@ npm manifest:
       "surge:teardown": "surge teardown https://781227.surge.sh/",
       "generateSW": "C:\\Users\\hp\\AppData\\Local\\Yarn\\bin\\workbox.cmd generateSW",
       "injectManifest": "C:\\Users\\hp\\AppData\\Local\\Yarn\\bin\\workbox.cmd injectManifest workbox-config.js",
-      "onchange": "onchange 'src/**/*.*' -- yarn run injectManifest"
+      "watcher": "onchange -i -k 'src/**/*.js' 'src/**/*.svelte' -- yarn run injectManifest"
     },
     "devDependencies": {
       "@rollup/plugin-commonjs": "^16.0.0",
@@ -56,7 +60,8 @@ npm manifest:
       "rollup-plugin-svelte": "^7.0.0",
       "rollup-plugin-terser": "^7.0.2",
       "svelte": "^3.0.0",
-      "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+      "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+      "onchange": "^7.1.0",
     },
     "dependencies": {
       "@beyonk/svelte-carousel": "^2.8.0",
@@ -109,6 +114,16 @@ Lockfile:
     integrity sha512-kWObh9XqI7tfzltySmTZ0/ULE5MjLqd0jhsGhr+GnVfIkCOGwTHwQxzheLjC1dkBk0Z4wucLxBwUeSxqtGF9Ww==
     dependencies:
       siema "^1.5.1"
+  
+  "@blakeembrey/deque@^1.0.5":
+    version "1.0.5"
+    resolved "https://registry.yarnpkg.com/@blakeembrey/deque/-/deque-1.0.5.tgz#f4fa17fc5ee18317ec01a763d355782c7b395eaf"
+    integrity sha512-6xnwtvp9DY1EINIKdTfvfeAtCYw4OqBZJhtiqkT3ivjnEfa25VQ3TsKvaFfKm8MyGIEfE95qLe+bNEt3nB0Ylg==
+  
+  "@blakeembrey/template@^1.0.0":
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/@blakeembrey/template/-/template-1.0.0.tgz#bf8828bc3ae8004d97904d78f64e3cc2cd216438"
+    integrity sha512-J6WGZqCLdRMHUkyRG6fBSIFJ0rL60/nsQNh5rQvsYZ5u0PsKw6XQcJcA3DWvd9cN3j/IQx5yB1fexhCafwwUUw==
   
   "@fullhuman/postcss-purgecss@^3.0.0":
     version "3.0.0"
@@ -253,6 +268,11 @@ Lockfile:
       normalize-path "^3.0.0"
       picomatch "^2.0.4"
   
+  arg@^4.1.3:
+    version "4.1.3"
+    resolved "https://registry.yarnpkg.com/arg/-/arg-4.1.3.tgz#269fc7ad5b8e42cb63c896d5666017261c144089"
+    integrity sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==
+  
   async-limiter@~1.0.0:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.1.tgz#dd379e94f0db8310b08291f9d64c3209766617fd"
@@ -393,6 +413,21 @@ Lockfile:
       readdirp "~3.5.0"
     optionalDependencies:
       fsevents "~2.1.2"
+  
+  chokidar@^3.3.1:
+    version "3.5.1"
+    resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.1.tgz#ee9ce7bbebd2b79f49f304799d5468e31e14e68a"
+    integrity sha512-9+s+Od+W0VJJzawDma/gvBNQqkTiqYTWLuZoyAsivsI4AaWTCzHG06/TMjsf1cYe9Cb97UCEhjz7HvnPk2p/tw==
+    dependencies:
+      anymatch "~3.1.1"
+      braces "~3.0.2"
+      glob-parent "~5.1.0"
+      is-binary-path "~2.1.0"
+      is-glob "~4.0.1"
+      normalize-path "~3.0.0"
+      readdirp "~3.5.0"
+    optionalDependencies:
+      fsevents "~2.3.1"
   
   cliui@^5.0.0:
     version "5.0.0"
@@ -712,6 +747,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.1.3.tgz#fb738703ae8d2f9fe900c33836ddebee8b97f23e"
     integrity sha512-Auw9a4AxqWpa9GUfj370BMPzzyncfBABW8Mab7BGWBYDj4Isgq+cDKtx0i6u9jcX9pQDnswsaaOTgTmA5pEjuQ==
   
+  fsevents@~2.3.1:
+    version "2.3.2"
+    resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
+    integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
+  
   function-bind@^1.1.1:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
@@ -805,6 +845,11 @@ Lockfile:
     version "3.1.0"
     resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.1.0.tgz#7b5e6f7e665e9fb41f30007ed9e0d41e97fb2140"
     integrity sha512-1qYz89hW3lFDEazhjW0yVAV87lw8lVkrJocr72XmBkMKsoSVJCQx3W8BXsC7hO2qAt8BoVjYjtAcZ9perqGnNg==
+  
+  ignore@^5.1.4:
+    version "5.1.8"
+    resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.1.8.tgz#f150a8b50a34289b33e22f5889abd4d8016f0e57"
+    integrity sha512-BMpfD7PpiETpBl/A6S498BaIJ6Y/ABT93ETbby2fP00v4EbvPBXWEoaR1UBPKs3iR53pJY7EtZk5KACI57i1Uw==
   
   indexes-of@^1.0.1:
     version "1.0.1"
@@ -1161,6 +1206,19 @@ Lockfile:
     integrity sha1-WDsap3WWHUsROsF9nFC6753Xa9E=
     dependencies:
       wrappy "1"
+  
+  onchange@^7.1.0:
+    version "7.1.0"
+    resolved "https://registry.yarnpkg.com/onchange/-/onchange-7.1.0.tgz#a6f0f7733e4d47014b4cd70aa1ad36c2b4cf3804"
+    integrity sha512-ZJcqsPiWUAUpvmnJri5TPBooqJOPmC0ttN65juhN15Q8xA+Nbg3BaxBHXQ45EistKKlKElb0edmbPWnKSBkvMg==
+    dependencies:
+      "@blakeembrey/deque" "^1.0.5"
+      "@blakeembrey/template" "^1.0.0"
+      arg "^4.1.3"
+      chokidar "^3.3.1"
+      cross-spawn "^7.0.1"
+      ignore "^5.1.4"
+      tree-kill "^1.2.2"
   
   "opts@>= 1.2.0":
     version "2.0.2"
