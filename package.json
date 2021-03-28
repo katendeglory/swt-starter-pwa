@@ -5,7 +5,7 @@
     "tailwind:watch": "postcss public/tailwind.css -o public/index.css -w",
     "tailwind:build": "cross-env NODE_ENV=production postcss public/tailwind.css -o public/index.css",
     "dev:only": "cross-env HOST=0.0.0.0 PORT=80 rollup -c -w",
-    "build": "yarn run tailwind:build && rollup -c",
+    "build": "yarn run tailwind:build && rollup -c && yarn run injectManifest",
     "start": "sirv public",
     "serve": "serve public -p 80",
     "dev": "cross-env HOST=0.0.0.0 PORT=80 concurrently \"yarn run dev:only\" \"yarn run tailwind:watch\"",
@@ -15,7 +15,9 @@
     "web:deploy": "yarn run git:push && yarn run build && Xcopy /E /I /Y .\\public .\\..\\public && cd ../public && yarn run git:push && cd ../client",
     "surge:deploy": "yarn run build && surge public https://781227.surge.sh/",
     "surge:teardown": "surge teardown https://781227.surge.sh/",
-    "wb-src": "workbox injectManifest"
+    "generateSW": "C:\\Users\\hp\\AppData\\Local\\Yarn\\bin\\workbox.cmd generateSW",
+    "injectManifest": "C:\\Users\\hp\\AppData\\Local\\Yarn\\bin\\workbox.cmd injectManifest workbox-config.js",
+    "onchange": "onchange 'src/**/*.*' -- yarn run injectManifest"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^16.0.0",
