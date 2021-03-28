@@ -1,0 +1,9 @@
+{
+  "name": "public",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "git:push": "git add . && git commit -am \"Yet another commit\" && git push --force"
+  },
+  "license": "MIT"
+}

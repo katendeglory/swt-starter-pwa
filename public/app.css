@@ -1,0 +1,106 @@
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  /* font-family: 'Poppins', sans-serif; */
+  /* font-family: 'Rubik', sans-serif; */
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Quicksand', cursive;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: overlay;
+}
+
+.h-font {
+  /* font-family: 'Poppins', sans-serif; */
+  /* font-family: 'Rubik', sans-serif; */
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Quicksand', cursive;
+}
+
+*::selection {
+  background-color: #F4A26150;
+  opacity: .15;
+  color: white;
+}
+
+:root {
+  --thumbScroll: #cbd5e0;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--thumbScroll);
+  border-radius: 25px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--thumbScroll);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--thumbScroll);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: transparent;
+}
+
+::-webkit-scrollbar-track:active {
+  background: transparent;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Custom Buttons */
+
+.btn-sh {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  resize: none;
+  outline: none;
+  border: none;
+  width: max-content;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  background-size: 200% auto;
+  padding: .75rem 1.5rem;
+  padding-bottom: .83rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-sh:hover {
+  transform: translateY(-2px);
+}
+
+.btn-sh-orange {
+  background-image: linear-gradient(to right, #F4A261 0%, #F4A275 99%);
+  box-shadow: 0 12px 12px -11px #F4A261b8;
+}
+
+.btn-sh-green {
+  background-image: linear-gradient(to right, #68E4BC 0%, #4AD0D1 99%);
+  box-shadow: 0 12px 12px -11px #0db4afb8;
+}

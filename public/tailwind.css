@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Buttons */
+
+.btn {
+  @apply text-gray-50 flex justify-center items-center w-max px-6 py-3 rounded-md;
+  outline: 0px dashed rgba(255, 255, 255, .25);
+  outline-offset: -5px;
+}
+
+.btn-orange {
+  @apply bg-brand-orange;
+}
+
+/**********************************************************************************************
+  FORMS CUSTOMIZATION 
+***********************************************************************************************/
+
+select, input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea, .selectContainer {
+  @apply text-sm rounded-lg border-none cursor-pointer bg-white text-gray-800 !important;
+}
+
+select, input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea {
+  @apply inline-block px-4 py-3 w-full cursor-text !important;
+}
+
+select:focus, input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="number"]:focus, textarea:focus, .selectContainer input:focus {
+  @apply outline-none border-green-500 !important;
+}
+
+input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder, input[type="number"]::placeholder, {
+  font-family: inherit !important;
+  @apply text-gray-400 text-base !important;
+}
+
+*:focus {
+  @apply outline-none !important;
+}
+
+/* 
+  SVELTE SELECT
+  -------------
+  
+  Use shadows in the parent wrapping the select component for the effect to work.
+
+  .selectContainer > selectedItem > selection(text) 
+  .selectContainer > input 
+  .selectContainer > clearSelect
+  .selectContainer > div > .listContainer > listItem > item(text)
+
+  * shared classname : svelte-2eeumy or input field
+*/
+
+/* Dropdown list */
+
+.listItem .item {
+  @apply bg-transparent !important;
+}
+
+.listItem .item:hover {
+  @apply font-bold bg-transparent !important;
+}
+
+.listItem .item.active {
+  @apply bg-brand-orange text-white !important;
+}
+
+/* Reset */
+
+.selectContainer * {
+  @apply bg-transparent !important;
+}
+
+.listContainer {
+  @apply bg-white !important;
+}
+
+.selectContainer input::placeholder {
+  font-family: inherit !important;
+  @apply text-gray-400 text-base !important;
+}

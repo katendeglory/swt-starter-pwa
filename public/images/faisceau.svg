@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="807.229" height="545.851" viewBox="0 0 807.229 545.851">
+  <defs>
+    <style>
+      .a {
+        fill: #ebcb8b;
+      }
+
+      .b {
+        fill: #09f;
+      }
+
+      .c {
+        fill: #02c39a;
+      }
+
+      .d {
+        fill: #374151;
+      }
+
+      .e {
+        fill: #d08770;
+      }
+    </style>
+  </defs>
+  <g transform="translate(-234.343 -1044.898)">
+    <rect class="a" width="549" height="155" rx="29" transform="translate(473.415 1231.086) rotate(20)" />
+    <rect class="b" width="635" height="109" rx="29" transform="translate(444.868 1044.898) rotate(20)" />
+    <rect class="c" width="658" height="108" rx="33" transform="translate(271.281 1264.212) rotate(20)" />
+    <rect class="d" width="528" height="95" rx="29" transform="translate(475.656 1112.539) rotate(20)" />
+    <rect class="e" width="581" height="98" rx="20" transform="translate(322.878 1137.593) rotate(20)" />
+  </g>
+</svg>

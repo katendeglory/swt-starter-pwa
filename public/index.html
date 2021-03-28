@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width,initial-scale=1'>
+
+	<title>Welcome To Our Website | Supermarket for Students </title>
+
+	<link rel='icon' type='image/png' href='./favicon.svg'>
+	<link rel="manifest" href="./manifest.json">
+	<link rel='stylesheet' href='./build/bundle.css'>
+	<link rel='stylesheet' href='./index.css'>
+	<script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+	<link href="https://fonts.googleapis.com/css2
+		?family=Montserrat:wght@100;200;300;400;500&display=swap
+		&family=Poppins:wght@200;300&display=swap
+		&family=Quicksand:wght@300;400;500&display=swap
+		&family=Rubik:wght@300&family=Raleway:wght@100;200;300&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="./app.css">
+	<script defer src='./build/bundle.js'></script>
+</head>
+
+<body>
+
+	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" crossorigin="anonymous"> -->
+	<script async>
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', function () {
+				navigator.serviceWorker.register('/sw.js');
+			});
+		}
+	</script>
+	<script defer>
+		window.addEventListener('appinstalled', (evt) => {
+			console.log('app installed');
+			stylesheet = document.styleSheets[0]
+			stylesheet.insertRule(".pwa-btn { display: none !important;}", 0);
+		});
+
+		if (window.matchMedia('(display-mode: standalone)').matches) {
+			console.log('app installed');
+			stylesheet = document.styleSheets[0]
+			stylesheet.insertRule(".pwa-btn { display: none !important;}", 0);
+		} else {
+			console.log('app not installed');
+		}
+	</script>
+</body>
+
+</html>
