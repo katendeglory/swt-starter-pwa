@@ -28,4 +28,12 @@ workbox.routing.registerRoute(
 //   }),
 // );
 
+self.addEventListener("push", e => {
+  const data = e.data.json();
+  self.registration.showNotification(data.title, {
+    body: "Notified From Svelte App!",
+    icon: "http://image.ibb.co/frYOFd/tmlogo.png"
+  });
+});
+
 workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);

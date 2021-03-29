@@ -17,7 +17,8 @@
         as on page load it's still hidden and waiting for the PWA to be ready. 
         The button will be rendered as soon as we have caught the beforeinstallprompt event.
         The event prompt will have to be manually triggered with the click of the button. 
-        The beforeinstallprompt event will only trigger after the worker is installed, activated & ready
+        The beforeinstallprompt event will only trigger after the worker is installed, activated & ready.
+        Otherwise it'll throw an exception and won't trigger.
       */
       PWAInstallBtn.addEventListener("click", clickListener);
     }

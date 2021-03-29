@@ -5,7 +5,7 @@
 	<meta charset='utf-8'>
 	<meta name='viewport' content='width=device-width,initial-scale=1'>
 
-	<title>Welcome To Our Website | Supermarket for Students </title>
+	<title>Welcome To Our Website | Supermarket for Everyone </title>
 
 	<link rel='icon' type='image/png' href='./favicon.svg'>
 	<link rel="manifest" href="./manifest.json">
@@ -23,46 +23,8 @@
 </head>
 
 <body>
-
+	<script async src="app.js"></script>
 	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" crossorigin="anonymous"> -->
-
-	<script async>
-
-		let mode = 'DEVELOPMENT';
-		// let mode = 'PRODUCTION';
-
-		if ('serviceWorker' in navigator) {
-			// We don't need excessive caching in development mode, the changes won't be taken into account
-			if (mode === 'PRODUCTION') {
-				console.log("🔴🔴🔴 YOU ARE IN PRODUCTION, MAKE SURE TO UNREGISTER SERVICE WORKERS WHEN DEVELOPING")
-				window.addEventListener('load', function () {
-					navigator.serviceWorker.register('/sw.js');
-				});
-			} else {
-				navigator.serviceWorker.getRegistrations().then(registrations => {
-					for (let registration of registrations) {
-						registration.unregister();
-					}
-				})
-				console.log("🔴🔴🔴 SERVICE WORKERS DISABLED IN DEVELOPMENT MODE");
-			}
-		}
-	</script>
-	<script defer>
-		window.addEventListener('appinstalled', (evt) => {
-			console.log('💡 The PWA is installed on this device');
-			stylesheet = document.styleSheets[0]
-			stylesheet.insertRule(".pwa-btn { display: none !important;}", 0);
-		});
-
-		if (window.matchMedia('(display-mode: standalone)').matches) {
-			console.log('💡 The PWA is installed on this device');
-			stylesheet = document.styleSheets[0]
-			stylesheet.insertRule(".pwa-btn { display: none !important;}", 0);
-		} else {
-			console.log('💡 The PWA is not installed on this device');
-		}
-	</script>
 </body>
 
 </html>
