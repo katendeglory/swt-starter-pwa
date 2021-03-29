@@ -13,7 +13,7 @@
         class="mb-5 h-font font-bold md:pt-10 text-5xl sm:text-5xl md:text-5xl lg:text-6xl"
       >
         <!-- style="filter: drop-shadow(1px 1px 1px rgba(0,0,0,.35));" -->
-        Hey There! Welcome to Your Personal Supermarket!
+        Hey There! Welcome to The Best Supermarket!
       </h1>
       <p class="mb-5 text-gray-500">
         We've kept the best deals out there just for you! If you're a student,

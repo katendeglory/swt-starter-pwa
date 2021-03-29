@@ -16,8 +16,8 @@
     "web:deploy": "yarn run git:push && yarn run build && Xcopy /E /I /Y .\\public .\\..\\public && cd ../public && yarn run git:push && cd ../client",
     "surge:deploy": "yarn run build && surge public https://781227.surge.sh/",
     "surge:teardown": "surge teardown https://781227.surge.sh/",
-    "generateSW": "C:\\Users\\hp\\AppData\\Local\\Yarn\\bin\\workbox.cmd generateSW",
-    "injectManifest": "C:\\Users\\hp\\AppData\\Local\\Yarn\\bin\\workbox.cmd injectManifest workbox-config.js",
+    "generateSW": "workbox generateSW",
+    "injectManifest": "workbox injectManifest workbox-config.js",
     "watcher": "onchange \"src/**/*.*\" -- yarn run injectManifest"
   },
   "devDependencies": {
