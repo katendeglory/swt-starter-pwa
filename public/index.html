@@ -31,30 +31,36 @@
 		let mode = 'DEVELOPMENT';
 		// let mode = 'PRODUCTION';
 
-		// We don't need excessive caching in development mode, the changes won't be taken into account
-		if (mode === 'PRODUCTION') {
-			if ('serviceWorker' in navigator) {
+		if ('serviceWorker' in navigator) {
+			// We don't need excessive caching in development mode, the changes won't be taken into account
+			if (mode === 'PRODUCTION') {
+				console.log("🔴🔴🔴 YOU ARE IN PRODUCTION, MAKE SURE TO UNREGISTER SERVICE WORKERS WHEN DEVELOPING")
 				window.addEventListener('load', function () {
 					navigator.serviceWorker.register('/sw.js');
 				});
+			} else {
+				navigator.serviceWorker.getRegistrations().then(registrations => {
+					for (let registration of registrations) {
+						registration.unregister();
+					}
+				})
+				console.log("🔴🔴🔴 SERVICE WORKERS DISABLED IN DEVELOPMENT MODE");
 			}
-		} else {
-			console.log("💡 SERVICE WORKERS DISABLED IN DEVELOPMENT MODE")
 		}
 	</script>
 	<script defer>
 		window.addEventListener('appinstalled', (evt) => {
-			console.log('app installed');
+			console.log('💡 The PWA is installed on this device');
 			stylesheet = document.styleSheets[0]
 			stylesheet.insertRule(".pwa-btn { display: none !important;}", 0);
 		});
 
 		if (window.matchMedia('(display-mode: standalone)').matches) {
-			console.log('app installed');
+			console.log('💡 The PWA is installed on this device');
 			stylesheet = document.styleSheets[0]
 			stylesheet.insertRule(".pwa-btn { display: none !important;}", 0);
 		} else {
-			console.log('app not installed');
+			console.log('💡 The PWA is not installed on this device');
 		}
 	</script>
 </body>

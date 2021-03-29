@@ -1,5 +1,10 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.0.0/workbox-sw.js');
 
+/* 
+  Upon workbox injectManifest, if the files set for the cache changed, they'll be given new revisions.
+  With the new revisions, the content of the website will be updated. We'll skip the waiting part 
+*/
+
 workbox.skipWaiting();
 workbox.clientsClaim();
 

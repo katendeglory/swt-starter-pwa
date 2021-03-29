@@ -12,6 +12,13 @@
 
   $: {
     if (PWAInstallBtn) {
+      /*
+        Attach the click event listener to the install button when it is shown,
+        as on page load it's still hidden and waiting for the PWA to be ready. 
+        The button will be rendered as soon as we have caught the beforeinstallprompt event.
+        The event prompt will have to be manually triggered with the click of the button. 
+        The beforeinstallprompt event will only trigger after the worker is installed, activated & ready
+      */
       PWAInstallBtn.addEventListener("click", clickListener);
     }
   }
@@ -53,7 +60,7 @@
     });
 
     clickListener = (e) => {
-      // Hide the app provided install promotion
+      // Hide the app provided install promotion on click
       // hideMyInstallPromotion();
       // Show the install prompt
       deferredPrompt.prompt();
