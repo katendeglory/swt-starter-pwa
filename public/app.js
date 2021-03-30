@@ -16,13 +16,14 @@ window.addEventListener('load', async () => {
   if (currentSubscription) {
     console.log('%c 👇 We Already Have a Current Subscription 👇', 'background: #222; color: #bada55');
     console.log(currentSubscription);
+    // sendPush(subscription); // Should be sent from a server as a chron job. this is just a test!
   } else {
     console.log('%c 👇 We Have Created a New Subscription 👇', 'background: #222; color: #bada55');
     const subscription = await registerPush(workerRegistration);
     console.log(subscription);
+    // sendPush(subscription); // Should be sent from a server as a chron job. this is just a test!
   }
 
-  // sendPush(subscription); // Should be sent from a server as a chron job. this is just a test!
 });
 
 
