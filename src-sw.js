@@ -35,7 +35,7 @@ self.addEventListener("push", e => {
     body: data.body,
     icon: "./favicon.png",
     data: {
-      url: `http://localhost${data.url}`
+      url: `${self.location.origin}${data.url}`
     }
   });
 });
