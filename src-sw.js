@@ -30,11 +30,21 @@ workbox.routing.registerRoute(
 
 self.addEventListener("push", e => {
   const data = e.data.json();
+
   self.registration.showNotification(data.title, {
-    body: "Notified From Svelte App!",
-    // icon: "http://image.ibb.co/frYOFd/tmlogo.png"
-    icon: "./favicon.png"
+    body: data.body,
+    icon: "./favicon.png",
+    data: {
+      url: `http://localhost${data.url}`
+    }
   });
+});
+
+self.addEventListener("notificationclick", e => {
+
+  console.log(e.notification);
+
+  e.waitUntil(clients.openWindow(e.notification.data.url));
 });
 
 workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);

@@ -1,3 +1,5 @@
+// code for the server is here -> https://github.com/katendeglory/node_push_notifications
+
 window.addEventListener('load', async () => {
   let mode = 'PROD';
   if (mode === 'DEV') return;
@@ -24,6 +26,7 @@ window.addEventListener('load', async () => {
   else if (Notification.permission === "granted") {
     if (!currentSubscription) {
       const subscription = await registerPush(workerRegistration);
+      // Save this 👆 subscription to the server's database for later
       console.log('%c 👇 We Have Created a New Subscription 👇', 'background: #222; color: #bada55');
       console.log(subscription);
     }
@@ -38,6 +41,7 @@ window.addEventListener('load', async () => {
           console.log("Thanks for allow notifications on this site!");
           if (!currentSubscription) {
             const subscription = await registerPush(workerRegistration);
+            // Save this 👆 subscription to the server's database for later
             console.log('%c 👇 We Have Created a New Subscription 👇', 'background: #222; color: #bada55');
             console.log(subscription);
           }
