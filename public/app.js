@@ -3,7 +3,7 @@ window.addEventListener('load', async () => {
   let mode = 'PRODUCTION';
 
   if (mode === 'DEVELOPMENT') {
-    console.log("🔴🔴🔴 SERVICE WORKERS DISABLED IN DEVELOPMENT MODE");
+    console.log('%c 🔴🔴🔴 SERVICE WORKERS SHOULD BE UNREGISTERED IN DEV MODE 🔴🔴🔴', 'background: #222; color: #bada55');
     return;
   }
 
@@ -12,11 +12,12 @@ window.addEventListener('load', async () => {
   await navigator.serviceWorker.ready;
 
   const currentSubscription = await workerRegistration.pushManager.getSubscription();
+
   if (currentSubscription) {
-    console.log("👇 We Already Have a Current Subscription 👇");
+    console.log('%c 👇 We Already Have a Current Subscription 👇', 'background: #222; color: #bada55');
     console.log(currentSubscription);
   } else {
-    console.log("👇 We Will Create a Subscription 👇");
+    console.log('%c 👇 We Have Created a New Subscription 👇', 'background: #222; color: #bada55');
     const subscription = await registerPush(workerRegistration);
     console.log(subscription);
   }
