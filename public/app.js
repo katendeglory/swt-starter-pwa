@@ -1,7 +1,7 @@
 // code for the server is here -> https://github.com/katendeglory/node_push_notifications
 
 window.addEventListener('load', async () => {
-  let mode = 'PROD';
+  let mode = 'DEV';
   if (mode === 'DEV') return;
 
   //----------------------------------- Service Worker Registration
