@@ -1,33 +1,56 @@
 window.addEventListener('load', async () => {
-  // let mode = 'DEVELOPMENT';
-  let mode = 'PRODUCTION';
+  let mode = 'PROD';
+  if (mode === 'DEV') return;
 
-  if (mode === 'DEVELOPMENT') {
-    console.log('%c 🔴🔴🔴 SERVICE WORKERS SHOULD BE UNREGISTERED IN DEV MODE 🔴🔴🔴', 'background: #222; color: #bada55');
-    return;
-  }
+  //----------------------------------- Service Worker Registration
 
   const workerRegistration = await registerWorker();
-
   await navigator.serviceWorker.ready;
+
+  //----------------------------------- Current Subscription
 
   const currentSubscription = await workerRegistration.pushManager.getSubscription();
 
   if (currentSubscription) {
     console.log('%c 👇 We Already Have a Current Subscription 👇', 'background: #222; color: #bada55');
     console.log(currentSubscription);
-    // sendPush(subscription); // Should be sent from a server as a chron job. this is just a test!
-  } else {
-    console.log('%c 👇 We Have Created a New Subscription 👇', 'background: #222; color: #bada55');
-    const subscription = await registerPush(workerRegistration);
-    console.log(subscription);
-    // sendPush(subscription); // Should be sent from a server as a chron job. this is just a test!
   }
 
+  //----------------------------------- Notifications Logic
+  const askNotifsPermissionAfterMills = 30000;
+
+  if (Notification.permission === 'denied') return; // Leave him or her alone!
+
+  else if (Notification.permission === "granted") {
+    if (!currentSubscription) {
+      const subscription = await registerPush(workerRegistration);
+      console.log('%c 👇 We Have Created a New Subscription 👇', 'background: #222; color: #bada55');
+      console.log(subscription);
+    }
+  }
+
+  else if (Notification.permission !== 'granted') {
+    setTimeout(async () => { // Delay notifications to allow the guy to at least see the site's content
+      alert("💡 To get the latest news, please allow notifications on this Website!");
+
+      Notification.requestPermission(async permission => {
+        if (permission === "granted") {
+          console.log("Thanks for allow notifications on this site!");
+          if (!currentSubscription) {
+            const subscription = await registerPush(workerRegistration);
+            console.log('%c 👇 We Have Created a New Subscription 👇', 'background: #222; color: #bada55');
+            console.log(subscription);
+          }
+        }
+      });
+    }, askNotifsPermissionAfterMills);
+  }
 });
 
 
 // ------------------------------------------------------------------------------------------
+
+//----------------------------------- Utility Functions
 
 async function registerWorker() {
   return await navigator.serviceWorker.register("/sw.js");
