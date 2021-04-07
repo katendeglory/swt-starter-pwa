@@ -4,26 +4,33 @@
   import config from "../stores/config";
   import { onMount } from "svelte";
   import axios from "axios";
-
+  import * as ls from "local-storage";
+  import get from "lodash.get";
   let loading = true;
-
+  
   onMount(async () => {
-    // try {
-    //   let response = await Promise.all([
-    //     axios.get(`${$config.backendURL}/settings`),
-    //     axios.get(`${$config.backendURL}/categories`),
-    //     axios.get(`${$config.backendURL}/me`, { withCredentials: true }),
-    //   ]);
-    //   config.update((prev) => ({
-    //     ...prev,
-    //     settings: response[0].data,
-    //     categories: response[1].data,
-    //     currentUser: response[2].data,
-    //   }));
+    // if (get($config, "currentUser.username")) {
+    //   try {
+    //     let response = await Promise.all([
+    //       axios.get(`${$config.backendURL}/settings`),
+    //       axios.get(`${$config.backendURL}/items/categories`),
+    //       axios.get(`${$config.backendURL}/me`, {
+    //         headers: { authorization: ls.get("jwt") },
+    //       }),
+    //     ]);
+    //     config.update((prev) => ({
+    //       ...prev,
+    //       settings: response[0].data,
+    //       categories: response[1].data,
+    //       currentUser: response[2].data,
+    //     }));
+    //     loading = false;
+    //   } catch (error) {
+    //     loading = false;
+    //     console.log(error);
+    //   }
+    // } else {
     //   loading = false;
-    // } catch (error) {
-    //   loading = false;
-    //   console.log(error);
     // }
   });
 </script>
