@@ -7,9 +7,11 @@
   import * as ls from "local-storage";
   import get from "lodash.get";
   let loading = true;
+
+  // if (!ls.get("jwt")) window.location = "/#/login";
   
   onMount(async () => {
-    // if (get($config, "currentUser.username")) {
+    // if (!get($config, "currentUser.username")) {
     //   try {
     //     let response = await Promise.all([
     //       axios.get(`${$config.backendURL}/settings`),
