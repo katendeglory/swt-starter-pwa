@@ -2,39 +2,24 @@
 
 window.addEventListener('load', async () => {
   let mode = 'DEV';
-  // if (mode === 'DEV') return;
+  if (mode === 'DEV') return;
 
   //----------------------------------- Service Worker Registration
 
-  if ('serviceWorker' in navigator) console.log("💡 We're about to register the serviceWorker");
-  else { console.log("💡 Service workers are not supported by this browser"); return; }
-
   const workerRegistration = await registerWorker();
   await navigator.serviceWorker.ready;
-
-  //----------------------------------- Check if the guy is logged in before bothering him
-  // 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴
-
-  let currentUser = await getCurrentUser();
-
-  if (!currentUser.username) {
-    console.log("💡 No one is logged-in here. We won't register notifications");
-    return;
-  } else {
-    console.log(`💡 The current user logged-in is ${currentUser.username}, Let's get to subscriptions`);
-  }
 
   //----------------------------------- Current Subscription
 
   const currentSubscription = await workerRegistration.pushManager.getSubscription();
 
   if (currentSubscription) {
-    console.log('%c 👇 We Already Have a Current Subscription, Ready to go! 👇', 'background: #222; color: #bada55');
+    console.log('%c 👇 We Already Have a Current Subscription 👇', 'background: #222; color: #bada55');
     console.log(currentSubscription);
   }
 
   //----------------------------------- Notifications Logic
-  const askNotifsPermissionAfterMills = 7500;
+  const askNotifsPermissionAfterMills = 30000;
 
   if (Notification.permission === 'denied') return; // Leave him or her alone!
 
@@ -42,9 +27,8 @@ window.addEventListener('load', async () => {
     if (!currentSubscription) {
       const subscription = await registerPush(workerRegistration);
       // Save this 👆 subscription to the server's database for later
-      console.log('%c 👇 We Have Created a New Subscription To Save on DB 👇', 'background: #222; color: #bada55');
+      console.log('%c 👇 We Have Created a New Subscription 👇', 'background: #222; color: #bada55');
       console.log(subscription);
-      saveSubscription({ username: currentUser.username, sub: subscription })
     }
   }
 
@@ -54,13 +38,12 @@ window.addEventListener('load', async () => {
 
       Notification.requestPermission(async permission => {
         if (permission === "granted") {
-          console.log("💡 Thanks for allowing notifications on this site!");
+          console.log("Thanks for allow notifications on this site!");
           if (!currentSubscription) {
             const subscription = await registerPush(workerRegistration);
             // Save this 👆 subscription to the server's database for later
-            console.log('%c 👇 We Have Created a New Subscription To Save on DB 👇', 'background: #222; color: #bada55');
+            console.log('%c 👇 We Have Created a New Subscription 👇', 'background: #222; color: #bada55');
             console.log(subscription);
-            saveSubscription({ username: currentUser.username, sub: subscription })
           }
         }
       });
@@ -106,46 +89,8 @@ async function sendPush(subscription) {
   });
 }
 
-// ------------------------------------------------------------------------------------------
-// ------------------------------------------------------------------------------------------
-
-async function getCurrentUser() {
-  let url = window.location.host.includes("localhost") ? "http://localhost:5000" : "https://remote-url.surge.sh";
-
-  const endpoint = `${url}/me`;
-
-  let res = await fetch(endpoint, {
-    headers: new Headers({
-      'Authorization': JSON.parse(localStorage.getItem("jwt")),
-      'Content-Type': 'application/json'
-    })
-  });
-
-  let data = await res.json();
-
-  return data;
-}
-
-async function saveSubscription({ username, sub }) {
-
-  let url = window.location.host.includes("localhost") ? "http://localhost:5000" : "https://remote-url.surge.sh";
-
-  let res = await fetch(`${url}/pushnotifs`, {
-    method: 'POST',
-    headers: new Headers({
-      'Authorization': JSON.parse(localStorage.getItem("jwt")),
-      'Content-Type': 'application/json'
-    }),
-    body: JSON.stringify({ username, sub })
-  });
-
-  let json = await res.json();
-
-  return json;
-}
 
 
-// ------------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------
 
 window.addEventListener('appinstalled', (evt) => {
