@@ -43,7 +43,7 @@
             fr: "Nom d'utilisateur ou mot de passe incorrect!",
           })
         );
-        window.location = "/#/login";
+        window.location = "/index.html";
       });
   };
   onMount(() => {

@@ -17,7 +17,10 @@ window.addEventListener('load', async () => {
 
   let currentUser = await getCurrentUser();
 
-  if (!currentUser.username) {
+  if (!currentUser) {
+    console.log("💡 No one is logged-in here, no token in Storage, We won't register notifications");
+  }
+  else if (!currentUser.username) {
     console.log("💡 No one is logged-in here. We won't register notifications");
     return;
   } else {
@@ -34,7 +37,7 @@ window.addEventListener('load', async () => {
   }
 
   //----------------------------------- Notifications Logic
-  const askNotifsPermissionAfterMills = 7500;
+  const askNotifsPermissionAfterMills = 5000;
 
   if (Notification.permission === 'denied') return; // Leave him or her alone!
 
@@ -50,7 +53,7 @@ window.addEventListener('load', async () => {
 
   else if (Notification.permission !== 'granted') {
     setTimeout(async () => { // Delay notifications to allow the guy to at least see the site's content
-      alert("💡 To get the latest news, please allow notifications on this Website!");
+      alert("💡 To get notified about upcoming Dome Events, please allow notifications on this Website!");
 
       Notification.requestPermission(async permission => {
         if (permission === "granted") {
@@ -110,7 +113,7 @@ async function sendPush(subscription) {
 // ------------------------------------------------------------------------------------------
 
 async function getCurrentUser() {
-  let url = window.location.host.includes("localhost") ? "http://localhost:5000" : "https://remote-url.surge.sh";
+  let url = window.location.host.includes("localhost") ? "http://localhost:5000" : "https://megawem.herokuapp.com";
 
   const endpoint = `${url}/me`;
 
@@ -128,7 +131,12 @@ async function getCurrentUser() {
 
 async function saveSubscription({ username, sub }) {
 
-  let url = window.location.host.includes("localhost") ? "http://localhost:5000" : "https://remote-url.surge.sh";
+  if (!localStorage.getItem("jwt")) {
+    console.log("💡 No Token in storage");
+    return null
+  };
+
+  let url = window.location.host.includes("localhost") ? "http://localhost:5000" : "https://megawem.herokuapp.com";
 
   let res = await fetch(`${url}/pushnotifs`, {
     method: 'POST',

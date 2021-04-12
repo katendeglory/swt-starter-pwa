@@ -87,7 +87,7 @@
       id="inner-header"
       class="h-16 flex justify-between items-center transition-all duration-250"
     >
-      <a class="nav-link flex items-center" href="#home">
+      <a class="nav-link flex items-center" href="/index.html">
         <!-- <img src="./favicon.svg" class="w-8 object-cover mr-2" alt="home" /> -->
         <ion-icon name="home" class="text-2xl" />
         <!-- Home -->
