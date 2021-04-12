@@ -15,17 +15,17 @@ window.addEventListener('load', async () => {
   //----------------------------------- Check if the guy is logged in before bothering him
   // 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴
 
-  let currentUser = await getCurrentUser();
+  // let currentUser = await getCurrentUser();
 
-  if (!currentUser) {
-    console.log("💡 No one is logged-in here, no token in Storage, We won't register notifications");
-  }
-  else if (!currentUser.username) {
-    console.log("💡 No one is logged-in here. We won't register notifications");
-    return;
-  } else {
-    console.log(`💡 The current user logged-in is ${currentUser.username}, Let's get to subscriptions`);
-  }
+  // if (!currentUser) {
+  //   console.log("💡 No one is logged-in here, no token in Storage, We won't register notifications");
+  // }
+  // else if (!currentUser.username) {
+  //   console.log("💡 No one is logged-in here. We won't register notifications");
+  //   return;
+  // } else {
+  //   console.log(`💡 The current user logged-in is ${currentUser.username}, Let's get to subscriptions`);
+  // }
 
   //----------------------------------- Current Subscription
 
@@ -47,7 +47,7 @@ window.addEventListener('load', async () => {
       // Save this 👆 subscription to the server's database for later
       console.log('%c 👇 We Have Created a New Subscription To Save on DB 👇', 'background: #222; color: #bada55');
       console.log(subscription);
-      saveSubscription({ username: currentUser.username, sub: subscription })
+      // saveSubscription({ username: currentUser.username, sub: subscription })
     }
   }
 
@@ -63,7 +63,7 @@ window.addEventListener('load', async () => {
             // Save this 👆 subscription to the server's database for later
             console.log('%c 👇 We Have Created a New Subscription To Save on DB 👇', 'background: #222; color: #bada55');
             console.log(subscription);
-            saveSubscription({ username: currentUser.username, sub: subscription })
+            // saveSubscription({ username: currentUser.username, sub: subscription })
           }
         }
       });

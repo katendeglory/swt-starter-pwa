@@ -200,7 +200,8 @@ select { /* 1 */
 Correct the inability to style clickable types in iOS and Safari.
 */
 
-button {
+button,
+[type='button'] {
   -webkit-appearance: button;
 }
 
@@ -511,6 +512,12 @@ video {
 }
 
 
+      [type='text'],
+      [type='email'],
+      [type='url'],
+      [type='password'],
+      [type='tel'],
+      [type='time'],
       textarea,
       select
      {
@@ -529,7 +536,7 @@ video {
   line-height: 1.5rem;
 }
 
- textarea:focus, select:focus {
+[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='tel']:focus, [type='time']:focus, textarea:focus, select:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
   --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
@@ -634,6 +641,10 @@ select {
   justify-content: space-between;
 }
 
+.font-normal {
+  font-weight: 400;
+}
+
 .font-medium {
   font-weight: 500;
 }
@@ -652,6 +663,10 @@ select {
 
 .h-16 {
   height: 4rem;
+}
+
+.h-64 {
+  height: 16rem;
 }
 
 .h-screen {
@@ -750,6 +765,14 @@ select {
   margin-right: 1.5rem;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .mr-8 {
   margin-right: 2rem;
 }
@@ -760,6 +783,10 @@ select {
 
 .mt-32 {
   margin-top: 8rem;
+}
+
+.max-w-sm {
+  max-width: 24rem;
 }
 
 .max-w-6xl {
@@ -778,6 +805,10 @@ select {
 
 .overflow-auto {
   overflow: auto;
+}
+
+.p-5 {
+  padding: 1.25rem;
 }
 
 .px-2 {
@@ -1048,6 +1079,11 @@ select {
     -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
             animation-timing-function: cubic-bezier(0,0,0.2,1);
   }
+}
+
+.animate-pulse {
+  -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 /* Buttons */

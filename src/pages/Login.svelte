@@ -31,7 +31,7 @@
         } else {
           loading = false;
           window.location.reload();
-          window.location = "/#/contacts";
+          window.location = "/index.html";
         }
       })
       .catch((err) => {
