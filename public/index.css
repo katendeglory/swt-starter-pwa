@@ -1115,7 +1115,7 @@ select {
   FORMS CUSTOMIZATION 
 ***********************************************************************************************/
 
-select, input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea, .selectContainer {
+select, input[type="file"], input[type="text"], input[type="date"], input[type="time"], input[type="email"], input[type="password"], input[type="number"], textarea, .selectContainer {
   --tw-bg-opacity: 1 !important;
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity)) !important;
   border-radius: 0.5rem !important;
@@ -1123,11 +1123,13 @@ select, input[type="text"], input[type="email"], input[type="password"], input[t
   cursor: pointer !important;
   font-size: 0.875rem !important;
   line-height: 1.25rem !important;
+  --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
   --tw-text-opacity: 1 !important;
   color: rgba(31, 41, 55, var(--tw-text-opacity)) !important;
 }
 
-select, input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea {
+select, input[type="file"], input[type="text"], input[type="date"], input[type="time"], input[type="email"], input[type="password"], input[type="number"], textarea {
   cursor: text !important;
   display: inline-block !important;
   padding-top: 0.75rem !important;
@@ -1137,40 +1139,40 @@ select, input[type="text"], input[type="email"], input[type="password"], input[t
   width: 100% !important;
 }
 
-select:focus, input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="number"]:focus, textarea:focus, .selectContainer input:focus {
+select:focus, input[type="text"]:focus, input[type="file"]:focus, input[type="date"]:focus, input[type="time"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="number"]:focus, textarea:focus, .selectContainer input:focus {
   --tw-border-opacity: 1 !important;
   border-color: rgba(16, 185, 129, var(--tw-border-opacity)) !important;
   outline: 2px solid transparent !important;
   outline-offset: 2px !important;
 }
 
-input[type="text"]::-moz-placeholder, input[type="email"]::-moz-placeholder, input[type="password"]::-moz-placeholder, input[type="number"]::-moz-placeholder {
+input[type="file"]::-moz-placeholder, input[type="text"]::-moz-placeholder, input[type="date"]::-moz-placeholder, input[type="time"]::-moz-placeholder, input[type="email"]::-moz-placeholder, input[type="password"]::-moz-placeholder, input[type="number"]::-moz-placeholder {
   font-family: inherit !important;
 }
 
-input[type="text"]:-ms-input-placeholder, input[type="email"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder, input[type="number"]:-ms-input-placeholder {
+input[type="file"]:-ms-input-placeholder, input[type="text"]:-ms-input-placeholder, input[type="date"]:-ms-input-placeholder, input[type="time"]:-ms-input-placeholder, input[type="email"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder, input[type="number"]:-ms-input-placeholder {
   font-family: inherit !important;
 }
 
-input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder, input[type="number"]::placeholder, {
+input[type="file"]::placeholder, input[type="text"]::placeholder, input[type="date"]::placeholder, input[type="time"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder, input[type="number"]::placeholder, {
   font-family: inherit !important;
 }
 
-input[type="text"]::-moz-placeholder, input[type="email"]::-moz-placeholder, input[type="password"]::-moz-placeholder, input[type="number"]::-moz-placeholder {
+input[type="file"]::-moz-placeholder, input[type="text"]::-moz-placeholder, input[type="date"]::-moz-placeholder, input[type="time"]::-moz-placeholder, input[type="email"]::-moz-placeholder, input[type="password"]::-moz-placeholder, input[type="number"]::-moz-placeholder {
   font-size: 1rem !important;
   line-height: 1.5rem !important;
   --tw-text-opacity: 1 !important;
   color: rgba(156, 163, 175, var(--tw-text-opacity)) !important;
 }
 
-input[type="text"]:-ms-input-placeholder, input[type="email"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder, input[type="number"]:-ms-input-placeholder {
+input[type="file"]:-ms-input-placeholder, input[type="text"]:-ms-input-placeholder, input[type="date"]:-ms-input-placeholder, input[type="time"]:-ms-input-placeholder, input[type="email"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder, input[type="number"]:-ms-input-placeholder {
   font-size: 1rem !important;
   line-height: 1.5rem !important;
   --tw-text-opacity: 1 !important;
   color: rgba(156, 163, 175, var(--tw-text-opacity)) !important;
 }
 
-input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder, input[type="number"]::placeholder,  {
+input[type="file"]::placeholder, input[type="text"]::placeholder, input[type="date"]::placeholder, input[type="time"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder, input[type="number"]::placeholder,  {
   font-size: 1rem !important;
   line-height: 1.5rem !important;
   --tw-text-opacity: 1 !important;
