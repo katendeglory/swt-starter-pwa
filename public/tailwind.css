@@ -17,19 +17,19 @@
   FORMS CUSTOMIZATION 
 ***********************************************************************************************/
 
-select, input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea, .selectContainer {
-  @apply text-sm rounded-lg border-none cursor-pointer bg-white text-gray-800 !important;
+select, input[type="file"], input[type="text"], input[type="date"], input[type="time"], input[type="email"], input[type="password"], input[type="number"], textarea, .selectContainer {
+  @apply text-sm rounded-lg border-none cursor-pointer bg-white text-gray-800 shadow-sm !important;
 }
 
-select, input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea {
+select, input[type="file"], input[type="text"], input[type="date"], input[type="time"], input[type="email"], input[type="password"], input[type="number"], textarea {
   @apply inline-block px-4 py-3 w-full cursor-text !important;
 }
 
-select:focus, input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="number"]:focus, textarea:focus, .selectContainer input:focus {
+select:focus, input[type="text"]:focus, input[type="file"]:focus, input[type="date"]:focus, input[type="time"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="number"]:focus, textarea:focus, .selectContainer input:focus {
   @apply outline-none border-green-500 !important;
 }
 
-input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder, input[type="number"]::placeholder, {
+input[type="file"]::placeholder, input[type="text"]::placeholder, input[type="date"]::placeholder, input[type="time"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder, input[type="number"]::placeholder, {
   font-family: inherit !important;
   @apply text-gray-400 text-base !important;
 }

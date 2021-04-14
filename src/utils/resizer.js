@@ -4,7 +4,7 @@ const resize = Resizer.imageFileResizer;
 
 export let resizeImage = (file) => {
   return new Promise((resolve, reject) => {
-    resize(file, 750, 750, "JPEG", 100, 0, uri => resolve(uri), "blob");
+    resize(file, 750, 750, "JPEG", 75, 0, uri => resolve(uri), "blob");
   });
 };
 
