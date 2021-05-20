@@ -2,7 +2,7 @@
 
 window.addEventListener('load', async () => {
   let mode = 'DEV';
-  // if (mode === 'DEV') return;
+  if (mode === 'DEV') return;
 
   //----------------------------------- Service Worker Registration
 
