@@ -29,9 +29,12 @@ select:focus, input[type="datetime-local"]:focus, input[type="text"]:focus, inpu
   @apply outline-none border-green-500 !important;
 }
 
-input[type="file"]::placeholder, input[type="datetime-local"]::placeholder, input[type="text"]::placeholder, input[type="date"]::placeholder, input[type="time"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder, input[type="number"]::placeholder, {
+
+/* input[type="file"]::placeholder, input[type="datetime-local"]::placeholder, input[type="text"]::placeholder, input[type="date"]::placeholder, input[type="time"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder, input[type="number"]::placeholder, .selectContainer input::placeholder { */
+
+*::placeholder {
   font-family: inherit !important;
-  @apply text-gray-400 text-base !important;
+  @apply text-gray-500 text-base !important;
 }
 
 *:focus {

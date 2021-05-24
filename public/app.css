@@ -104,3 +104,19 @@ body {
   background-image: linear-gradient(to right, #68E4BC 0%, #4AD0D1 99%);
   box-shadow: 0 12px 12px -11px #0db4afb8;
 }
+
+.glassmorph {
+  background: rgba( 31, 41, 55, 0.3);
+  backdrop-filter: blur( 6px);
+  -webkit-backdrop-filter: blur( 6px);
+}
+
+.glassmorph-blurry {
+  background: rgba( 31, 41, 55, 0.95);
+  backdrop-filter: blur( 7px);
+  -webkit-backdrop-filter: blur( 7px);
+}
+
+.selectContainer input::placeholder {
+  color: rgb(107, 114, 128) !important;
+}
