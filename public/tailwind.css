@@ -83,3 +83,8 @@ select:focus, input[type="datetime-local"]:focus, input[type="text"]:focus, inpu
   font-family: inherit !important;
   @apply text-gray-400 text-base !important;
 }
+
+.selectContainer {
+  position: relative;
+  z-index: 2;
+}
