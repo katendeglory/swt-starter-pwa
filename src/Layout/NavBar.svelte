@@ -82,7 +82,7 @@
   class="navbar text-gray-600 fixed top-0 left-0 w-full z-50 transition-all
     duration-250"
 >
-  <Container>
+  <Container overflowHidden={false}>
     <div
       id="inner-header"
       class="h-16 flex justify-between items-center transition-all duration-250"
